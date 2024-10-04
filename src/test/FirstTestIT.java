@@ -18,6 +18,7 @@ public class FirstTestIT {
         char alphabet = 'a';
         Teacher teacher = new Teacher();
         int count = teacher.countAlphabet(word, alphabet);
+        System.out.println("count: " + count);
         assertEquals(1, count);
     }
 }
