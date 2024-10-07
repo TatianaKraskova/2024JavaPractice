@@ -1,5 +1,6 @@
 package test;
 
+import main.Main;
 import main.Teacher;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -13,7 +14,7 @@ public class FirstTestIT {
     }
 
     @Test
-    public void alphabetCountIT() {
+    public void alphabetCount() {
         String word = "pizza";
         char alphabet = 'a';
         Teacher teacher = new Teacher();
@@ -21,4 +22,27 @@ public class FirstTestIT {
         System.out.println("count: " + count);
         assertEquals(1, count);
     }
+
+    @Test
+    public void lengthOfFetchedWord(){
+        Teacher teacher = new Teacher();
+        String word = teacher.fetchWord();
+        assertTrue(word.length() == 5);
+    }
+
+    @Test
+    public void fetchClueBeforeGuess() {
+        Teacher teacher = new Teacher();
+        String clue = teacher.fetchClue("pizza");
+        assertEquals( "-----", clue);
+    }
+
+    @Test
+    public void getReversedWord() {
+        new Main();
+        String word = Main.reverseWord("pizza");
+        System.out.println("reversed word: " + word);
+        assertEquals("azzip", word);
+    }
+
 }

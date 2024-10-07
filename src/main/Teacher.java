@@ -8,4 +8,16 @@ public class Teacher {
        }
         return result;
     }
+
+    public String fetchWord() {
+        return "pizza";
+    }
+
+    public String fetchClue(String word) {
+        StringBuilder clue = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            clue.append("-");
+        }
+        return clue.toString();
+    }
 }
