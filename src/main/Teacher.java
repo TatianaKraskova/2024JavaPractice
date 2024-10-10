@@ -1,6 +1,16 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class Teacher {
+    public static final int MAX_TRIALS = 10;
+    public int remainingTrials;
+    public List<String> wordsList = new ArrayList<>();
+    public Set<String> usedWordsSet = new HashSet<>();
+
     public int countAlphabet(String word, char alphabet) {
        int result = 0;
        for(char c : word.toCharArray()) {
@@ -9,8 +19,17 @@ public class Teacher {
         return result;
     }
 
-    public String fetchWord() {
-        return "pizza";
+    public String fetchWord(int requestedLength) {
+        String result = null;
+        remainingTrials = MAX_TRIALS;
+        for (String word: wordsList) {
+            if(word.length() != requestedLength) continue;
+            else if (usedWordsSet.add(word)) {
+                result = word;
+                break;
+            }
+        }
+        return result;
     }
 
     public String fetchClue(String word) {

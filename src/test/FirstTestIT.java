@@ -26,7 +26,7 @@ public class FirstTestIT {
     @Test
     public void lengthOfFetchedWord(){
         Teacher teacher = new Teacher();
-        String word = teacher.fetchWord();
+        String word = teacher.fetchWord(5);
         assertTrue(word.length() == 5);
     }
 
@@ -45,4 +45,11 @@ public class FirstTestIT {
         assertEquals("azzip", word);
     }
 
+    @Test
+    public void remainingTrialsBeforeAnyGuess() {
+        Teacher teacher = new Teacher();
+        int requestedLength = 0;
+        teacher.fetchWord(requestedLength);
+        assertEquals(Teacher.MAX_TRIALS, teacher.remainingTrials);
+    }
 }
