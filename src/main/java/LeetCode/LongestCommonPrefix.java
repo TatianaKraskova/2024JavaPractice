@@ -12,8 +12,26 @@ package main.LeetCode;
 public class LongestCommonPrefix {
     public static void main(String[] args) {
         String[] strs = {"flower", "flow", "flight"};
-        System.out.println(longestCommonPrefix(strs));
+        System.out.println(longestCommonPrefixPk(strs));
     }
+
+    public static String longestCommonPrefixPk(String[] strs) {
+	if (strs == null || strs.length == 0) {
+	  return "";
+	}
+
+	String s = strs[0];
+	int k=0;
+        UP: for (;k<s.length(); k++) {
+	  char ch = s.charAt(k);	
+	  for (int j=1; j<strs.length; j++) {
+	    if (k >= strs[j].length() || strs[j].charAt(k)!=ch)
+	      break UP;
+	  }
+	}
+	return (k==0)?"":s.substring(0,k);
+    }
+
 
     public static String longestCommonPrefix(String[] strs) {
         if (strs == null || strs.length == 0) {
